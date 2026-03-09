@@ -2,6 +2,7 @@ import Stripes from "../ui/Stripes";
 
 interface SectionProps {
   h1: string;
+  specialWord?: string;
   img: string;
   imgDescription: string;
   classes?: string;
@@ -10,6 +11,7 @@ interface SectionProps {
 
 export default function Section({
   h1,
+  specialWord,
   img,
   imgDescription,
   classes,
@@ -17,9 +19,14 @@ export default function Section({
 }: SectionProps) {
   return (
     <section className="sections flex flex-col">
-      <h1>{h1}</h1>
-      <div className="image">
-        <img src={img} alt={imgDescription} className={`${classes} w-full`} />
+      <h2 className="flex justify-evenly">
+        {specialWord && (
+          <div className="rotate bg-special text-lg">{specialWord}</div>
+        )}
+        {h1}
+      </h2>
+      <div className={`${classes} image`}>
+        <img src={img} alt={imgDescription} className="w-full" />
       </div>
       {children}
       <Stripes />

@@ -9,7 +9,7 @@ export default function Nav() {
           <a href="#">lessons</a>
         </li>
         <li>
-          <a href="#">about me</a>
+          <a href="#aboutMe">about me</a>
         </li>
       </ul>
     </nav>

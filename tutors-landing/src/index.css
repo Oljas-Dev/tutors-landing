@@ -17,6 +17,8 @@
   --color-stripe-1: #1c4c70;
   --color-stripe-2: #338f9a;
   --color-stripe-3: #7aa9a3;
+
+  --h2-text-size: 2.2rem;
 }
 
 a,
@@ -29,7 +31,7 @@ h1 {
 }
 
 h2 {
-  font-size: 2.8rem;
+  font-size: var(--h2-text-size);
 }
 
 p {
@@ -42,20 +44,18 @@ p {
   border-left: 2px dashed var(--color-stroke-main);
   border-right: 2px dashed var(--color-stroke-main);
 
-  height: 100vh;
   margin: 0 0.8rem;
   padding-top: 2.4rem;
+  position: relative;
 }
 
 .nav {
-  background-color: var(--color-accent);
   margin: 0 1.2rem;
-  padding: 0.5rem 1.6rem;
+  /* padding: 0.5rem 1.6rem; */
 }
 
 .nav__list {
-  justify-content: end;
-  gap: 2.4rem;
+  justify-content: space-between;
 }
 
 .nav__list a {
@@ -64,17 +64,15 @@ p {
 }
 
 .nav__list li {
-  border: 1px dashed var(--color-stroke-main);
   padding: 0.5rem 1.3rem;
 }
 
 .sections {
   gap: 3rem;
-  /* align-items: center; */
 }
 
 .image {
-  margin: 3.6rem -1.6rem;
+  margin: 0 -1.4rem;
 }
 
 .bg-special {
@@ -82,7 +80,6 @@ p {
   color: var(--color-bg-main);
   border: 2px dashed var(--color-bg-main);
   max-width: fit-content;
-  margin: 0 auto;
   padding: 0.5rem 1.3rem;
 }
 
@@ -92,18 +89,84 @@ p {
   border: 2px solid var(--color-stroke-main);
 
   max-width: 75%;
-  padding: 2.4rem 1.3rem;
+  padding: 1.5rem 1.3rem;
   align-self: center;
 }
 
+/* benefit section styles */
+.bs-paragraphs {
+  gap: 1.6rem;
+}
+
+/* about me section styles */
+.about-me {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar {
+  background-image: url(../public/avatar.png);
+  background-size: cover;
+  background-position: center;
+  width: 27rem;
+  height: 27rem;
+  border: 0.4rem solid var(--color-accent);
+  border-radius: 100%;
+}
+
+.achievements {
+  justify-content: space-between;
+}
+.achievement {
+  width: 25%;
+}
+
+.reviews {
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.review {
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 0 1rem;
+}
+
+.review-image {
+  width: 7.5rem;
+  height: 7.5rem;
+  background-position: center;
+  background-size: cover;
+  border-radius: 100%;
+}
+
+/* stripe component styles */
+
 .stripes {
   gap: 0.4rem;
+  width: 100%;
 }
 
 .stripe {
   height: 3px;
+}
+
+.main-stripes {
+  transform: rotate(90deg);
+  width: 12.5rem;
+
+  position: absolute;
+  top: 5rem;
+  left: -2rem;
+}
+
+.sec-stripes {
   width: 100%;
-  
+  position: absolute;
+  top: 7rem;
+  left: 5rem;
 }
 
 .stripe__color1 {
@@ -116,8 +179,29 @@ p {
   background-color: var(--color-stripe-1);
 }
 
+/* general styles */
+
 .w-full {
   width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.m-center {
+  margin: 0 auto;
+}
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.sections-mt {
+  margin-top: 2rem;
+}
+
+.text-lg {
+  font-size: var(--h2-text-size);
 }
 
 .flex {
@@ -128,6 +212,22 @@ p {
   flex-direction: column;
 }
 
-.mt-h2 {
-  margin-top: 2.8rem;
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+.rotate {
+  transform: rotate(-10deg);
+}
+
+.hide {
+  display: none;
+}
+.opacity-05 {
+  opacity: 0.5;
+}
+@media only screen and (min-width: 400px) {
+  :root {
+    --h2-text-size: 2.8rem;
+  }
 }
