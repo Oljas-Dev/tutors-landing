@@ -3,7 +3,7 @@ export default function Nav() {
     <nav className="nav">
       <ul className="nav__list flex">
         <li>
-          <a href="#">reviews</a>
+          <a href="#reviews">reviews</a>
         </li>
         <li>
           <a href="#">lessons</a>
