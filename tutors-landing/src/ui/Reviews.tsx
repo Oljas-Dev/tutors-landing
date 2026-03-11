@@ -33,7 +33,7 @@ export default function Reviews() {
     setCurrentSlide((prev) => (prev -= 1));
   }
   return (
-    <div className="reviews flex">
+    <div className="reviews flex" id="reviews">
       <ChevronLeft
         size={20}
         onClick={() => sliderLeft()}
