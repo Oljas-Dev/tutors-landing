@@ -20,7 +20,9 @@
 
   --h2-text-size: 2.2rem;
 }
-
+a {
+  color: var(--color-stroke-main);
+}
 a,
 button {
   cursor: pointer;
@@ -44,6 +46,7 @@ p {
   border-left: 2px dashed var(--color-stroke-main);
   border-right: 2px dashed var(--color-stroke-main);
 
+  max-width: 70rem;
   margin: 0 0.8rem;
   padding-top: 2.4rem;
   position: relative;
@@ -67,12 +70,15 @@ p {
   padding: 0.5rem 1.3rem;
 }
 
-.sections {
-  gap: 3rem;
-}
-
 .image {
   margin: 0 -1.4rem;
+}
+
+.section {
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 0 0.8rem;
 }
 
 .bg-special {
@@ -142,6 +148,42 @@ p {
   border-radius: 100%;
 }
 
+/* FAQ styles */
+.faq-section {
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.faq-list li {
+  transition: all 0.3s ease;
+}
+.faq-list div {
+  font-size: 1.4rem;
+  padding: 1.5rem 0;
+  border-top: 2px dashed var(--color-stroke-main);
+  cursor: pointer;
+}
+
+.faq-list li:last-child {
+  border-bottom: 2px dashed var(--color-stroke-main);
+}
+
+.accordion-content-in {
+  background-color: #fff;
+  border-top: 2px dashed var(--color-stroke-main);
+  padding: 1.5rem 0;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* stripe component styles */
 
 .stripes {
@@ -185,6 +227,9 @@ p {
   width: 100%;
 }
 
+.h-0 {
+  height: 0;
+}
 .h-full {
   height: 100%;
 }
@@ -194,6 +239,10 @@ p {
 }
 .mt-1 {
   margin-top: 1rem;
+}
+
+.sections {
+  gap: 3rem;
 }
 
 .sections-mt {
@@ -229,5 +278,14 @@ p {
 @media only screen and (min-width: 400px) {
   :root {
     --h2-text-size: 2.8rem;
+  }
+  .reviews {
+    width: 39rem;
+    justify-content: space-between;
+  }
+}
+@media only screen and (min-width: 700px) {
+  .main {
+    margin: 0 auto;
   }
 }

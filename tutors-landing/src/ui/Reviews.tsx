@@ -1,6 +1,7 @@
 import Review from "./Review";
 import ImgOne from "../../public/rvw-img-1.png";
 import ImgTwo from "../../public/rvw-img-2.png";
+import ImgThree from "../../public/rvw-img-3.png";
 import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
 import { useState } from "react";
 
@@ -14,6 +15,10 @@ export default function Reviews() {
     {
       img: ImgTwo,
       text: "“Now I speak confidently at work.” – Ahmed, UAE",
+    },
+    {
+      img: ImgThree,
+      text: "“I started to talk after one week!” – John, Israel",
     },
   ];
   const showArrowRight = currentSlide + 1 >= reviewsArray.length;

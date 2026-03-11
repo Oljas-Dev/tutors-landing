@@ -3,10 +3,10 @@ export default function Nav() {
     <nav className="nav">
       <ul className="nav__list flex">
         <li>
-          <a href="#">reviews</a>
+          <a href="#myReviews">reviews</a>
         </li>
         <li>
-          <a href="#">lessons</a>
+          <a href="#inline-widget-meet-with-oljas-medetbaev">lessons</a>
         </li>
         <li>
           <a href="#aboutMe">about me</a>

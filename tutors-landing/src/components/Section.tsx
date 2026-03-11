@@ -19,7 +19,7 @@ export default function Section({
 }: SectionProps) {
   return (
     <section className="sections flex flex-col">
-      <h2 className="flex justify-evenly">
+      <h2 className="section flex">
         {specialWord && (
           <div className="rotate bg-special text-lg">{specialWord}</div>
         )}

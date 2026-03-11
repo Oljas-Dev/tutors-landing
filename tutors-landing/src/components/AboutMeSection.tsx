@@ -9,7 +9,7 @@ export default function AboutMeSection() {
       <div className="avatar"></div>
       <Achievements />
 
-      <h2>What my students say</h2>
+      <h2 id="myReviews">What my students say</h2>
       <Reviews />
       <Stripes />
     </section>
