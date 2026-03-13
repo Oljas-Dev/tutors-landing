@@ -11,6 +11,7 @@
 
 :root {
   --color-bg-main: #fdf7eb;
+  --color-bg-body: #fff;
   --color-accent: #fac040;
   --color-pink: #e935a4;
   --color-stroke-main: #000;
@@ -19,6 +20,10 @@
   --color-stripe-3: #7aa9a3;
 
   --h2-text-size: 2.2rem;
+}
+
+body {
+  background-color: var(--color-bg-body);
 }
 a {
   color: var(--color-stroke-main);
@@ -43,8 +48,8 @@ p {
 .main {
   text-align: center;
   background-color: var(--color-bg-main);
-  border-left: 2px dashed var(--color-stroke-main);
-  border-right: 2px dashed var(--color-stroke-main);
+  border-left: 2px solid var(--color-stroke-main);
+  border-right: 2px solid var(--color-stroke-main);
 
   max-width: 70rem;
   margin: 0 0.8rem;
@@ -84,7 +89,7 @@ p {
 .bg-special {
   background-color: var(--color-pink);
   color: var(--color-bg-main);
-  border: 2px dashed var(--color-bg-main);
+  border: 2px solid var(--color-stroke-main);
   max-width: fit-content;
   padding: 0.5rem 1.3rem;
 }
@@ -160,17 +165,17 @@ p {
 .faq-list div {
   font-size: 1.4rem;
   padding: 1.5rem 0;
-  border-top: 2px dashed var(--color-stroke-main);
+  border-top: 2px solid var(--color-stroke-main);
   cursor: pointer;
 }
 
 .faq-list li:last-child {
-  border-bottom: 2px dashed var(--color-stroke-main);
+  border-bottom: 2px solid var(--color-stroke-main);
 }
 
 .accordion-content-in {
   background-color: #fff;
-  border-top: 2px dashed var(--color-stroke-main);
+  border-top: 2px solid var(--color-stroke-main);
   padding: 1.5rem 0;
   animation: fadeIn 0.3s ease-in-out;
 }

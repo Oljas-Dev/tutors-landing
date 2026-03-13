@@ -25,9 +25,11 @@ export default function Calendar() {
 
   return (
     <div
+      className="m-center"
       id="inline-widget-meet-with-oljas-medetbaev"
       style={{
         minWidth: "280px",
+        maxWidth: "450px",
         height: "700px",
         paddingTop: "16px",
       }}
