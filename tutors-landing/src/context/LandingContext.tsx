@@ -44,6 +44,7 @@ function LandingProvider({ children }: { children: ReactNode }) {
           text: "Clear next steps",
         },
       ],
+      classes: "",
     },
     {
       heading: "Speaking lesson",
@@ -62,6 +63,7 @@ function LandingProvider({ children }: { children: ReactNode }) {
           text: "Visible progress",
         },
       ],
+      classes: "",
     },
   ];
 
