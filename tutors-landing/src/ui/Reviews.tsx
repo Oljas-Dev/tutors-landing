@@ -2,11 +2,11 @@ import Review from "./Review";
 import ImgOne from "../../public/rvw-img-1.png";
 import ImgTwo from "../../public/rvw-img-2.png";
 import ImgThree from "../../public/rvw-img-3.png";
-import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
-import { useState } from "react";
+import Slider from "./Slider";
+import { useLanding } from "../context/LandingContext";
 
 export default function Reviews() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const { currentSlide, setCurrentSlide } = useLanding();
   const reviewsArray = [
     {
       img: ImgOne,
@@ -21,24 +21,12 @@ export default function Reviews() {
       text: "“I started to talk after one week!” – John, Israel",
     },
   ];
-  const showArrowRight = currentSlide + 1 >= reviewsArray.length;
-  const showArrowLeft = currentSlide <= 0;
-
-  function sliderRight() {
-    if (showArrowRight) return;
-    setCurrentSlide((prev) => (prev += 1));
-  }
-  function sliderLeft() {
-    if (showArrowLeft) return;
-    setCurrentSlide((prev) => (prev -= 1));
-  }
   return (
-    <div className="reviews flex" id="reviews">
-      <ChevronLeft
-        size={20}
-        onClick={() => sliderLeft()}
-        className={`${showArrowLeft && "opacity-05"}`}
-      />
+    <Slider
+      arr={reviewsArray}
+      setSlide={setCurrentSlide}
+      currentSlide={currentSlide}
+    >
       {reviewsArray.map((review, i) => (
         <Review
           img={review.img}
@@ -47,11 +35,6 @@ export default function Reviews() {
           classes={currentSlide === i ? "" : "hide"}
         />
       ))}
-      <ChevronRight
-        size={20}
-        onClick={() => sliderRight()}
-        className={`${showArrowRight && "opacity-05"}`}
-      />
-    </div>
+    </Slider>
   );
 }

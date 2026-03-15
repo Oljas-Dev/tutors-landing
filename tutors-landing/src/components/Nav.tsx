@@ -12,6 +12,7 @@ export default function Nav() {
           <a href="#aboutMe">about me</a>
         </li>
       </ul>
+      {/* <button>mode</button> */}
     </nav>
   );
 }
