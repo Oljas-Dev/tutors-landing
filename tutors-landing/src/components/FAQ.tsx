@@ -9,8 +9,8 @@ export default function FAQ() {
   const { offerOptions, currentOfferSlide, setCurrentOfferSlide } =
     useLanding();
   return (
-    <section className="faq-section sections sections-mt flex ">
-      <div className="benefits-info flex flex-col bs-paragraphs">
+    <section className="faq-section sections sections-mt flex">
+      <div className="benefits-info flex flex-col bs-paragraphs m-center">
         <h2>What do I offer</h2>
         <Slider
           arr={offerOptions}

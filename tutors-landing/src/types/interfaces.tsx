@@ -7,5 +7,5 @@ export interface offerOptionsProps {
   heading: string;
   duration: string;
   textArr: textObjProps[];
-  classes: string;
+  classes?: string;
 }
