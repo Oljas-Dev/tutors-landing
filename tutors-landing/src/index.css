@@ -336,6 +336,9 @@ p {
     width: 39rem;
     justify-content: space-between;
   }
+  .offer-card {
+    width: 20rem;
+  }
 }
 @media only screen and (min-width: 700px) {
   .main {

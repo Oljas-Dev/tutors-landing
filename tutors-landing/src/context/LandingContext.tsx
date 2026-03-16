@@ -65,6 +65,25 @@ function LandingProvider({ children }: { children: ReactNode }) {
       ],
       classes: "",
     },
+    {
+      heading: "IELTS prepare",
+      duration: "45min",
+      textArr: [
+        {
+          icon: speak,
+          text: "IELTS practice",
+        },
+        {
+          icon: goalFlag,
+          text: "Step by step progress",
+        },
+        {
+          icon: trendUp,
+          text: "Sure to reach goals",
+        },
+      ],
+      classes: "",
+    },
   ];
 
   return (
