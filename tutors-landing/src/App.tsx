@@ -1,23 +1,28 @@
 import AboutMeSection from "./components/AboutMeSection";
 import Applayout from "./components/Applayout";
 import BenefitSection from "./components/BenefitSection";
-import Calendar from "./components/Calendar";
+// import Koalender from "./components/Koalender";
 import FAQ from "./components/FAQ";
 import HeroSection from "./components/HeroSection";
 import Nav from "./components/Nav";
+import TutorCalendar from "./components/TutorCalendar";
+import { CalendarProvider } from "./context/CalendarContext";
 import { LandingProvider } from "./context/LandingContext";
 
 function App() {
   return (
     <LandingProvider>
-      <Applayout>
-        <Nav />
-        <HeroSection />
-        <BenefitSection />
-        <AboutMeSection />
-        <FAQ />
-        <Calendar />
-      </Applayout>
+      <CalendarProvider>
+        <Applayout>
+          <Nav />
+          <HeroSection />
+          <BenefitSection />
+          <AboutMeSection />
+          <FAQ />
+          <TutorCalendar />
+          {/* <Koalender /> */}
+        </Applayout>
+      </CalendarProvider>
     </LandingProvider>
   );
 }

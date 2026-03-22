@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function Calendar() {
+export default function Koalender() {
   useEffect(() => {
     const script = document.createElement("script");
     script.innerText =

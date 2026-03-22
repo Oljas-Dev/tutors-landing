@@ -263,6 +263,7 @@ p {
 }
 
 .offer-card-time p {
+  margin-top: 0.2rem;
   font-size: 1.2rem;
 }
 
@@ -271,10 +272,81 @@ p {
 }
 
 .offer-card-paragraph {
+  align-items: center;
   gap: 1.2rem;
 }
 
+/* calendar styles */
+.calendar {
+  font-size: 1.6rem;
+  background-color: var(--color-offer-card-bg);
+  min-height: 43rem;
+  gap: 1.6rem;
+
+  border: 2px solid var(--color-stroke-main);
+  margin: 2.4rem 0.5rem;
+  padding: 2rem 1.6rem 2.4rem;
+}
+
+.calendar-header {
+  gap: 1.6rem;
+}
+
+.calendar-months-slider {
+  width: 25rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.calendar-img {
+  background-image: url(../public/avatar.png);
+  background-position: center;
+  background-size: cover;
+
+  border: 2px solid var(--color-accent);
+  border-radius: 100%;
+  width: 7rem;
+  height: 7rem;
+  margin: 0 auto;
+}
+.calendar-text {
+  font-size: 1.6rem;
+}
+
+.calendar-main {
+  gap: 1.6rem;
+}
+
+.calendar-dates {
+  gap: 0.8rem;
+}
+
+.calendar-weekdays,
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-content: space-between;
+}
+
+.calendar-weekdays,
+.calendar-days div {
+  font-size: 1.6rem;
+}
+
+.calendar-weekdays {
+  font-weight: 600;
+}
+
+.currentDay {
+  font-weight: 700;
+}
+
 /* general styles */
+
+.cursor {
+  cursor: pointer;
+}
 
 .w-full {
   width: 100%;
@@ -338,6 +410,9 @@ p {
   }
   .offer-card {
     width: 20rem;
+  }
+  .calendar-months-slider {
+    width: 29rem;
   }
 }
 @media only screen and (min-width: 700px) {
