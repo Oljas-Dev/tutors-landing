@@ -9,7 +9,7 @@ export default function ShowPreviousMonth() {
         lastDaysPreviousMonth.map((day, i) => (
           <div
             key={i + 1}
-            className="mt-1 opacity-05"
+            className="mt-md opacity-03"
             onClick={handlePreviousMonth}
           >
             {day}

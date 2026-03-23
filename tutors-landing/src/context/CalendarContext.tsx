@@ -7,9 +7,23 @@ import {
   type SetStateAction,
 } from "react";
 
+type EventsTypes = Record<
+  number,
+  {
+    time: string[];
+    duration: string;
+    id: string;
+  }
+>;
+
 interface CalendarProps {
+  events: EventsTypes;
   currentMonth: Date;
+  currentBookingDay: number;
+  showBookingForm: boolean;
+  setCurrentBookingDay: Dispatch<SetStateAction<number>>;
   setCurrentMonth: Dispatch<SetStateAction<Date>>;
+  setShowBookingForm: Dispatch<SetStateAction<boolean>>;
   daysInMonth: number;
   firstDayOfMonth: number;
   daysOfNextMonth: number;
@@ -23,10 +37,42 @@ const CalendarContext = createContext({} as CalendarProps);
 
 function CalendarProvider({ children }: { children: ReactNode }) {
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [currentBookingDay, setCurrentBookingDay] = useState(0);
+  const [showBookingForm, setShowBookingForm] = useState(false);
 
   const today = new Date().getDate();
   const month = new Date().getMonth();
   const year = new Date().getFullYear();
+
+  const events = {
+    23: {
+      time: ["9:00 - 10:00"],
+      duration: "one hour",
+      id: "23.3",
+    },
+    24: {
+      time: [
+        "10:00 - 11:00",
+        "11:00 - 12:00",
+        "15:00 - 16:00",
+        "15:00 - 16:00",
+        "15:00 - 16:00",
+        "15:00 - 16:00",
+      ],
+      duration: "one hour",
+      id: "24.3",
+    },
+    29: {
+      time: ["11:00 - 12:00"],
+      duration: "one hour",
+      id: "29.3",
+    },
+    2: {
+      time: ["11:00 - 12:00"],
+      duration: "one hour",
+      id: "2.4",
+    },
+  };
 
   const daysInMonth = new Date(
     currentMonth.getFullYear(),
@@ -74,6 +120,10 @@ function CalendarProvider({ children }: { children: ReactNode }) {
     } else return false;
   }
 
+  // function isPast(date: string) {
+  //   return new Date(date) < new Date();
+  // }
+
   const handleNextMonth = () => {
     setCurrentMonth(
       new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1),
@@ -84,11 +134,17 @@ function CalendarProvider({ children }: { children: ReactNode }) {
       new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1),
     );
   };
+
   return (
     <CalendarContext.Provider
       value={{
+        events,
         currentMonth,
+        showBookingForm,
+        currentBookingDay,
+        setCurrentBookingDay,
         setCurrentMonth,
+        setShowBookingForm,
         daysInMonth,
         daysOfNextMonth,
         firstDayOfMonth,
