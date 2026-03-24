@@ -2,6 +2,7 @@ import { useState, type Dispatch, type SetStateAction } from "react";
 import { ArrowLeft } from "react-bootstrap-icons";
 import { useCalendar } from "../context/CalendarContext";
 import toast from "react-hot-toast";
+import { useSendEmail } from "../features/useSendEmail";
 
 interface currentLessonTypes {
   time: string[];

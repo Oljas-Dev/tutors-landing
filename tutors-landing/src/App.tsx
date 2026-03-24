@@ -9,29 +9,34 @@ import Nav from "./components/Nav";
 import TutorCalendar from "./components/TutorCalendar";
 import { CalendarProvider } from "./context/CalendarContext";
 import { LandingProvider } from "./context/LandingContext";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <LandingProvider>
-      <CalendarProvider>
-        <Applayout>
-          <Nav />
-          <HeroSection />
-          <BenefitSection />
-          <AboutMeSection />
-          <FAQ />
-          <TutorCalendar />
-          {/* <Koalender /> */}
-        </Applayout>
-        <Toaster
-          toastOptions={{
-            style: {
-              fontSize: "20px",
-            },
-          }}
-        />
-      </CalendarProvider>
-    </LandingProvider>
+    <QueryClientProvider client={queryClient}>
+      <LandingProvider>
+        <CalendarProvider>
+          <Applayout>
+            <Nav />
+            <HeroSection />
+            <BenefitSection />
+            <AboutMeSection />
+            <FAQ />
+            <TutorCalendar />
+            {/* <Koalender /> */}
+          </Applayout>
+          <Toaster
+            toastOptions={{
+              style: {
+                fontSize: "20px",
+              },
+            }}
+          />
+        </CalendarProvider>
+      </LandingProvider>
+    </QueryClientProvider>
   );
 }
 
