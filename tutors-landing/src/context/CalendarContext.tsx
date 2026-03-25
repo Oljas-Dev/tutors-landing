@@ -24,7 +24,7 @@ interface CalendarProps {
   setCurrentBookingDay: Dispatch<SetStateAction<number>>;
   setCurrentMonth: Dispatch<SetStateAction<Date>>;
   setShowBookingForm: Dispatch<SetStateAction<boolean>>;
-  fromToArray: object[];
+  lessonsScheduleArray: object[];
   daysInMonth: number;
   firstDayOfMonth: number;
   daysOfNextMonth: number;
@@ -32,7 +32,6 @@ interface CalendarProps {
   isToday: (i: number) => boolean;
   handleNextMonth: () => void;
   handlePreviousMonth: () => void;
-  addFromTo: () => void;
 }
 
 const CalendarContext = createContext({} as CalendarProps);
@@ -46,7 +45,64 @@ function CalendarProvider({ children }: { children: ReactNode }) {
   const month = new Date().getMonth();
   const year = new Date().getFullYear();
 
-  const fromToArray = [{ id: "123" }];
+  const lessonsScheduleArray = [
+    {
+      day: "Monday",
+      lessons: [
+        {
+          id: "23.03.2026-0000",
+        },
+      ],
+    },
+    {
+      day: "Tuesday",
+      lessons: [
+        {
+          id: "24.03.2026-0001",
+        },
+      ],
+    },
+    {
+      day: "Wednesday",
+      lessons: [
+        {
+          id: "25.03.2026-0002",
+        },
+      ],
+    },
+    {
+      day: "Thursday",
+      lessons: [
+        {
+          id: "26.03.2026-0003",
+        },
+      ],
+    },
+    {
+      day: "Friday",
+      lessons: [
+        {
+          id: "27.03.2026-0004",
+        },
+      ],
+    },
+    {
+      day: "Saturday",
+      lessons: [
+        {
+          id: "28.03.2026-0005",
+        },
+      ],
+    },
+    {
+      day: "Sunday",
+      lessons: [
+        {
+          id: "29.03.2026-0006",
+        },
+      ],
+    },
+  ];
 
   const events = {
     23: {
@@ -139,11 +195,6 @@ function CalendarProvider({ children }: { children: ReactNode }) {
     );
   };
 
-  function addFromTo() {
-    const id = Math.random() * 1000;
-    fromToArray.push({ id: id.toString() });
-  }
-
   return (
     <CalendarContext.Provider
       value={{
@@ -154,7 +205,7 @@ function CalendarProvider({ children }: { children: ReactNode }) {
         setCurrentBookingDay,
         setCurrentMonth,
         setShowBookingForm,
-        fromToArray,
+        lessonsScheduleArray,
         daysInMonth,
         daysOfNextMonth,
         firstDayOfMonth,
@@ -162,7 +213,6 @@ function CalendarProvider({ children }: { children: ReactNode }) {
         handlePreviousMonth,
         isToday,
         lastDaysPreviousMonth,
-        addFromTo,
       }}
     >
       {children}

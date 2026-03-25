@@ -2,20 +2,23 @@ import { useState } from "react";
 import FromToElement from "./FromToElement";
 import { useCalendar } from "../context/CalendarContext";
 
-export default function DaySchedule({ weekday }: { weekday: string }) {
+export default function DaySchedule({ weekday }: { weekday: object }) {
+  const { day, lessons } = weekday;
   const [showSchedule, setShowSchedule] = useState(false);
 
-  const { fromToArray } = useCalendar();
+  const { lessonsScheduleArray } = useCalendar();
 
   function addFromTo() {
     const id = Math.random() * 1000;
-    fromToArray.push({ id: id.toString() });
+    lessons.push({ id: id.toString() });
   }
+
+  function deleteLesson(id: string) {}
 
   return (
     <div className="form-schedule-day">
       <div className="form-schedule-day-header flex">
-        <h3>{weekday}</h3>
+        <h3>{day}</h3>
         <div
           className="toggle"
           onClick={() => setShowSchedule((schedule) => !schedule)}
@@ -24,8 +27,16 @@ export default function DaySchedule({ weekday }: { weekday: string }) {
         </div>
       </div>
 
-      {showSchedule && fromToArray.map((_, i) => <FromToElement key={i} />)}
-      <button onClick={() => addFromTo()}>add more +</button>
+      {showSchedule && lessons.map((_, i) => <FromToElement key={i} />)}
+      {showSchedule && (
+        <button
+          type="button"
+          className="btn text-md mt-1"
+          onClick={() => addFromTo()}
+        >
+          add more +
+        </button>
+      )}
     </div>
   );
 }

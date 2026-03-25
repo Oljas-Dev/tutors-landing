@@ -454,6 +454,42 @@ p {
   gap: 1.6rem;
 }
 
+/* schedule tutor form styles */
+.form-schedule-day {
+  padding: 0.8rem 1.6rem;
+}
+
+.form-schedule-day-header {
+  justify-content: space-between;
+  background-color: var(--color-offer-card-bg);
+  font-size: 1.2rem;
+
+  padding: 0.8rem;
+}
+
+.form-schedule-day-header h3 {
+  font-size: 1.6rem;
+}
+
+.schedule-from-to {
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.schedule-duration option {
+  font-size: 1.4rem;
+}
+
+.schedule-input {
+  gap: 0.8rem;
+}
+
+.schedule-input input {
+  font-size: 1.4rem;
+}
+
 /* general styles */
 
 .cursor {
@@ -489,6 +525,9 @@ p {
   margin-top: 2rem;
 }
 
+.text-md {
+  font-size: 1.4rem;
+}
 .text-lg {
   font-size: var(--h2-text-size);
 }
