@@ -2,22 +2,13 @@ import { ArrowLeft } from "react-bootstrap-icons";
 import { useCalendar } from "../context/CalendarContext";
 import { useState } from "react";
 import ConfirmationBooking from "./ConfirmationBooking";
+import { weekdays } from "../helpers/variables";
 
 export default function LessonsBookForm() {
   const [showConfirm, setShowConfirm] = useState(false);
   const [lessonTime, setLessonTime] = useState(0);
   const { setShowBookingForm, events, currentBookingDay, currentMonth } =
     useCalendar();
-
-  const weekday = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
 
   const currentLesson = events[currentBookingDay];
   const monthStr = currentMonth.toLocaleString("default", { month: "long" });
@@ -31,7 +22,7 @@ export default function LessonsBookForm() {
   );
   const day = d.getDay();
 
-  const dayStr = weekday[day];
+  const dayStr = weekdays[day];
 
   function handleConfirmShow(i: number) {
     setShowConfirm(true);

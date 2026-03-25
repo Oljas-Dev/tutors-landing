@@ -24,6 +24,7 @@ interface CalendarProps {
   setCurrentBookingDay: Dispatch<SetStateAction<number>>;
   setCurrentMonth: Dispatch<SetStateAction<Date>>;
   setShowBookingForm: Dispatch<SetStateAction<boolean>>;
+  fromToArray: object[];
   daysInMonth: number;
   firstDayOfMonth: number;
   daysOfNextMonth: number;
@@ -31,6 +32,7 @@ interface CalendarProps {
   isToday: (i: number) => boolean;
   handleNextMonth: () => void;
   handlePreviousMonth: () => void;
+  addFromTo: () => void;
 }
 
 const CalendarContext = createContext({} as CalendarProps);
@@ -43,6 +45,8 @@ function CalendarProvider({ children }: { children: ReactNode }) {
   const today = new Date().getDate();
   const month = new Date().getMonth();
   const year = new Date().getFullYear();
+
+  const fromToArray = [{ id: "123" }];
 
   const events = {
     23: {
@@ -135,6 +139,11 @@ function CalendarProvider({ children }: { children: ReactNode }) {
     );
   };
 
+  function addFromTo() {
+    const id = Math.random() * 1000;
+    fromToArray.push({ id: id.toString() });
+  }
+
   return (
     <CalendarContext.Provider
       value={{
@@ -145,6 +154,7 @@ function CalendarProvider({ children }: { children: ReactNode }) {
         setCurrentBookingDay,
         setCurrentMonth,
         setShowBookingForm,
+        fromToArray,
         daysInMonth,
         daysOfNextMonth,
         firstDayOfMonth,
@@ -152,6 +162,7 @@ function CalendarProvider({ children }: { children: ReactNode }) {
         handlePreviousMonth,
         isToday,
         lastDaysPreviousMonth,
+        addFromTo,
       }}
     >
       {children}

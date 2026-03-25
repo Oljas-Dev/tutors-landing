@@ -1,4 +1,4 @@
-import { Toaster } from "react-hot-toast";
+// import { Toaster } from "react-hot-toast";
 import AboutMeSection from "./components/AboutMeSection";
 import Applayout from "./components/Applayout";
 import BenefitSection from "./components/BenefitSection";
@@ -27,13 +27,13 @@ function App() {
             <TutorCalendar />
             {/* <Koalender /> */}
           </Applayout>
-          <Toaster
+          {/* <Toaster
             toastOptions={{
               style: {
                 fontSize: "20px",
               },
             }}
-          />
+          /> */}
         </CalendarProvider>
       </LandingProvider>
     </QueryClientProvider>
