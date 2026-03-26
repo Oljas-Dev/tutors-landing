@@ -16,11 +16,18 @@ type EventsTypes = Record<
   }
 >;
 
+type durationTypes = "30min" | "45min" | "oneHour";
+
 interface CalendarProps {
   events: EventsTypes;
   currentMonth: Date;
   currentBookingDay: number;
   showBookingForm: boolean;
+  from: string;
+  to: number;
+  lessonDuration: durationTypes;
+  setLessonDuration: Dispatch<SetStateAction<durationTypes>>;
+  setFrom: Dispatch<SetStateAction<string>>;
   setCurrentBookingDay: Dispatch<SetStateAction<number>>;
   setCurrentMonth: Dispatch<SetStateAction<Date>>;
   setShowBookingForm: Dispatch<SetStateAction<boolean>>;
@@ -40,64 +47,90 @@ function CalendarProvider({ children }: { children: ReactNode }) {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [currentBookingDay, setCurrentBookingDay] = useState(0);
   const [showBookingForm, setShowBookingForm] = useState(false);
+  const [lessonDuration, setLessonDuration] =
+    useState<durationTypes>("oneHour");
+  const [from, setFrom] = useState("0:00");
 
   const today = new Date().getDate();
   const month = new Date().getMonth();
   const year = new Date().getFullYear();
 
+  const to = Number(from.substring(0, 1)) + 1;
+
   const lessonsScheduleArray = [
     {
       day: "Monday",
+      date: "23.03.2026",
       lessons: [
         {
+          time: "",
+          duration: "oneHour",
           id: "23.03.2026-0000",
         },
       ],
     },
     {
       day: "Tuesday",
+      date: "24.03.2026",
       lessons: [
         {
+          time: "",
+          duration: "oneHour",
           id: "24.03.2026-0001",
         },
       ],
     },
     {
       day: "Wednesday",
+      date: "25.03.2026",
       lessons: [
         {
+          time: "",
+          duration: "oneHour",
           id: "25.03.2026-0002",
         },
       ],
     },
     {
       day: "Thursday",
+      date: "26.03.2026",
       lessons: [
         {
+          time: "",
+          duration: "oneHour",
           id: "26.03.2026-0003",
         },
       ],
     },
     {
       day: "Friday",
+      date: "27.03.2026",
       lessons: [
         {
+          time: "",
+          duration: "oneHour",
           id: "27.03.2026-0004",
         },
       ],
     },
     {
       day: "Saturday",
+      date: "28.03.2026",
       lessons: [
         {
+          time: "",
+          duration: "oneHour",
           id: "28.03.2026-0005",
         },
       ],
     },
     {
       day: "Sunday",
+      date: "29.03.2026",
       lessons: [
         {
+          time: "",
+          duration: "oneHour",
           id: "29.03.2026-0006",
         },
       ],
@@ -199,9 +232,14 @@ function CalendarProvider({ children }: { children: ReactNode }) {
     <CalendarContext.Provider
       value={{
         events,
+        to,
         currentMonth,
         showBookingForm,
         currentBookingDay,
+        from,
+        lessonDuration,
+        setFrom,
+        setLessonDuration,
         setCurrentBookingDay,
         setCurrentMonth,
         setShowBookingForm,

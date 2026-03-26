@@ -2,13 +2,19 @@ import { useCalendar } from "../context/CalendarContext";
 import DaySchedule from "../ui/DaySchedule";
 
 export default function TutorCalendarForm() {
-  const { lessonsScheduleArray } = useCalendar();
+  const { lessonsScheduleArray, from, to, lessonDuration } = useCalendar();
   const week = "23.03.2026 - 29.03.2026";
 
-  function handleCalendarForm(e) {
+  function handleCalendarForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    console.log("form submitted");
+    const newSchedule = {
+      time: [`${from} - ${to}:00`],
+      duration: lessonDuration,
+      id: lesson.id,
+    };
+
+    console.log("new schedule", newSchedule);
   }
 
   return (
