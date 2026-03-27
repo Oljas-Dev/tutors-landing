@@ -55,13 +55,23 @@ export type WeekFormState = {
 const BookingContext = createContext({} as BookingTypes);
 
 function BookingContextProvider({ children }: { children: ReactNode }) {
-  const formState: WeekFormState = {
-    weekStart: "2026-03-30",
+  const formState: RecurringFormState = {
+    startDate: "2026-03-30",
+    endDate: "2026-04-13",
     selectedDays: [1],
     startTime: "09:00",
     endTime: "12:00",
     duration: 30,
     buffer: 10,
+    exceptions: [
+      { type: "exclude", date: "2026-04-06" },
+      {
+        type: "override",
+        date: "2026-04-13",
+        startTime: "14:00",
+        endTime: "18:00",
+      },
+    ],
   };
 
   const bookedSlots: Slot[] = [
@@ -78,37 +88,59 @@ function BookingContextProvider({ children }: { children: ReactNode }) {
   const slots: Slot[] = [];
 
   // generate free slots in schedule
-  function generateSlots(form: WeekFormState): Slot[] {
-    const weekStart = dayjs.utc(form.weekStart);
+  function generateSlots(form: RecurringFormState): Slot[] {
+    // const weekStart = dayjs.utc(form.weekStart);
 
-    form.selectedDays.forEach((day) => {
-      const currentDay = weekStart.add(day - 1, "day").format("YYYY-MM-DD");
+    let currentDate = dayjs.utc(form.startDate);
+    const endDate = dayjs.utc(form.endDate);
 
-      let currentTime = dayjs.utc(`${currentDay}T${form.startTime}:00`);
-      const endTime = dayjs.utc(`${currentDay}T${form.endTime}:00`);
+    while (currentDate.isBefore(endDate) || currentDate.isSame(endDate)) {
+      const dateStr = currentDate.format("YYYY-MM-DD");
+      const dayOfWeek = currentDate.day();
 
-      while (
-        currentTime.add(form.duration, "minute").isBefore(endTime) ||
-        currentTime.add(form.duration, "minute").isSame(endTime)
-      ) {
-        const slotEnd = currentTime.add(form.duration, "minute");
+      const exception = form.exceptions?.find(
+        (excep) => excep.date === dateStr,
+      );
 
-        // Generation breaks if time left is not enough for a whole lesson
-        if (slotEnd.isAfter(endTime)) break;
-
-        slots.push({
-          id: crypto.randomUUID(),
-          tutorId: "tutor-1",
-          start: currentTime.toISOString(),
-          end: slotEnd.toISOString(),
-          duration: form.duration,
-          buffer: form.buffer || 0,
-          status: "available",
-        });
-
-        currentTime = slotEnd.add(form.buffer ?? 0, "minute");
+      // skip excluded days
+      if (exception?.type === "exclude") {
+        currentDate = currentDate.add(1, "day");
+        continue;
       }
-    });
+
+      // determine if we should generate slots
+      const isSelectedDay = form.selectedDays.includes(dayOfWeek);
+      const isOverride = exception?.type === "override";
+
+      if (isSelectedDay || isOverride) {
+        const startTime = isOverride ? exception.startTime : form.startTime;
+        const endTime = isOverride ? exception.endTime : form.endTime;
+
+        let currentTime = dayjs.utc(`${dateStr}T${startTime}:00`);
+        const dayEndTime = dayjs.utc(`${dateStr}T${endTime}:00`);
+
+        while (true) {
+          const slotEnd = currentTime.add(form.duration, "minute");
+
+          // Generation breaks if time left is not enough for a whole lesson
+          if (slotEnd.isAfter(dayEndTime)) break;
+
+          slots.push({
+            id: crypto.randomUUID(),
+            tutorId: "tutor-1",
+            start: currentTime.toISOString(),
+            end: slotEnd.toISOString(),
+            duration: form.duration,
+            buffer: form.buffer || 0,
+            status: "available",
+          });
+
+          currentTime = slotEnd.add(form.buffer, "minute");
+        }
+      }
+
+      currentDate = currentDate.add(1, "day");
+    }
     return slots;
   }
 
