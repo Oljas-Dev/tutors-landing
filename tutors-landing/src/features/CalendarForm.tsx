@@ -2,7 +2,8 @@ import { useCalendar } from "../context/CalendarContext";
 import DaySchedule from "../ui/DaySchedule";
 
 export default function TutorCalendarForm() {
-  const { lessonsScheduleArray, from, to, lessonDuration } = useCalendar();
+  const { lessonsScheduleArray, from, to, lessonDuration, slots } =
+    useCalendar();
   const week = "23.03.2026 - 29.03.2026";
 
   function handleCalendarForm(e: React.FormEvent<HTMLFormElement>) {

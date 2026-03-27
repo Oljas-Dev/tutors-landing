@@ -54,8 +54,18 @@ function CalendarProvider({ children }: { children: ReactNode }) {
   const today = new Date().getDate();
   const month = new Date().getMonth();
   const year = new Date().getFullYear();
-
   const to = Number(from.substring(0, 1)) + 1;
+
+  // let slots: Slot[] = [
+  //   {
+  //     id: "s1",
+  //     tutorId: "tutor-1",
+  //     start: "2026-03-30T09:00:00Z",
+  //     end: "2026-03-30T09:30:00Z",
+  //     duration: 30,
+  //     status: "available",
+  //   },
+  // ];
 
   const lessonsScheduleArray = [
     {
